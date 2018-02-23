@@ -1,0 +1,124 @@
+File:    README
+Author:  Paige Meyer
+Program: prog5
+Date:	 2/27/2015
+
+
+BUILDING THE PROGRAM
+   This program was written in C++ and distributed to be built on a 
+   Linux system.  To build the program, type 'make' to create the 
+   executable called 'prog5'.
+
+RUNNING THE PROGRAM
+   Type 'prog5' at the command prompt after building the program.
+
+PROGRAM DESCRIPTION
+   This program will take integers the user inputs on the keyboard, up to 10 
+   integers long. It will keep asking for user input until the user enters '0'.
+   It will then output:
+         1. The integers separated in ascending order
+         2. The integers separated by spaces in descending order
+         3. Average value
+         4. Median value
+         5. Number of integers that is equivalent or less than or greater than the average
+         6. Same as previous using a different algorithm
+         7. Information for:  even integers equal or less than the average, even integers greater
+                 than the average, odd integer equal to or less than the average, and even integers
+                 greater than the average
+         8. Separate and display two arrays, one for evens and another for the odds and then display those arrays.
+
+
+PROGRAM INPUT
+   All input comes from the keyboard. The program will read until the
+   sentinel value, 0, is entered. Input can be entered all on one line
+   or on separate lines, or a combination of the two.
+   One example is below:
+      12
+      -7 20
+      4 5 0
+   
+   
+PROGRAM OUTPUT
+   All output is written to the screen. From the example input above,
+   the output is:
+   Finished entering, you entered 0.
+      1. Integer List in ascending order: 4 5 12 20 
+      2. Integer List in descending order: 20 12 5 4 
+      3. Average Value: 10.25
+      4. Median Value: 8.5
+      5. Number of values less than or equal to the average: 2
+	 Number of values greater than the average: 2
+      6. Number of values less than or equal to the average: 2
+         Number of values greater than the average: 2
+      7. Information about even and odd integers: 
+         Number of even values less than or equal to the average: 1
+         Number of even values greater than the average: 2
+         Number of odd values less than or equal to the average: 1
+         Number of odd values greater than the average: 0
+      8. Even array: 4 12 20 
+         Odd array: 5 
+
+
+PROGRAM DESIGN
+   This program stores all the integers in an array.
+
+   The general algorithm
+      read the integers and insert the integer in the correct place in the array
+      which is sorted in ascending order.
+      output the array
+      sort the array
+      output the array
+
+   Function input and output, preconditions and postconditions can
+   be found in the documentation for each file.
+
+FILE INDEX
+   file                        function(s)        description
+   --------------              -----------------  ----------------------
+   constants.h                                    constant declarations
+   
+   prototypes.h                                   function prototypes
+   
+   main.cpp                    main               calls all other functions
+   
+   average_value.cpp           calculate          calculates the average value
+   
+   count_less_average.cpp      calculate          calculates the integers less than the average
+
+   even_less_average.cpp       calculate          calculates the even integers less than or equal to the average
+
+   even_greater_average.cpp    calculate          calculates the even integers less than or equal to the average
+
+   index_count_less_average.cpp calculate         returns index of number less than the average
+
+   input_integers_to_array.cpp insert             ask for input and inserts integers to array
+
+   median_value.cpp            calculate          calculates median value of array
+
+   odd_less_average.cpp        calculate          calculates the odd integers less than or equal to the average
+
+   odd_greater_average.cpp     calculate          calculates the odd integers less than or equal to the average
+
+   print_array_ascending.cpp   output             prints the integers in ascending order separated by spaces
+
+   print_array_desceding.cpp   output             prints the integers in descending order separated by spaces
+   
+   separate_even_odd_arrays.cpp output            separates even and odd integers to different arrays
+
+   program_description.cpp     output	           prints the description of the program
+   
+   makefile                                       builds executable
+
+   README                                         this file, used for desciptions
+
+
+PROGRAM TESTING
+   This program was tested with different sets of data.  
+
+      Checked for a normal set of data partially filling the array
+   
+      Checked for the number of values exceeding the array size
+   
+      Checked for input of 1 value and the sentinel
+   
+      Checked for negative values and positive values

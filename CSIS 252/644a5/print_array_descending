@@ -1,0 +1,12 @@
+/* will print the array separated by spaces in descending order
+   Pre-condtions: array, and integer with length
+*/ Post-condtions: None
+
+void print_array_descending(const int numbers[], int ct) {
+  
+  // iterate through the list and print values in descending order
+  for (int i = ct; i > 0; i--) {
+    cout << numbers[i-1] << " ";	// prints each number in the array separated by spaces
+  } // end for loop
+
+} // end print_array_descending

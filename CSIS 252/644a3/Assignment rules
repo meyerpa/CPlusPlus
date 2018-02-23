@@ -1,0 +1,29 @@
+The purpose of this program is array processing. Write a C++ program on smaug that will do the following in the order given. While there are different ways to generate the same output, the requirement for this program is to do each step separately. This requirement is for redundancy to help you learn and retain array processing. Use the appropriate type loop for each as discussed in class.
+
+    Read ints from the keyboard and store them in an array of ints until the sentinel value 0 is entered. Only positive ints will be entered into the array. A negative int should result in an error message, then input will continue. The numbers will be inserted into the array in ascending order. Do not insert them then sort the array. The problem solving and algorithm was done in class when this program was assigned.
+    Output the array to the screen on one line with the ints separated by spaces.
+    Output the array to the screen in the opposite order on one line with the ints separated by spaces.
+    Output the average value formatted to 2 decimal places.
+    Output the median value formatted to 1 decimal place.
+    Output the number of ints in the array that are less than or equal to the average and the number of ints that are greater than the average by going through the entire array and counting them.
+    (Note: repeat of the previous item except doing it a different way) Output the number of ints in the array that are less than or equal to the average and the number of ints that are greater than the average without counting them. I.e. find the 1st value greater than the average then calculate each using count.
+    Output information about evens and odds including...
+        Output the number of even ints in the array less than equal to the average.
+        Output the number of even ints in the array greater than the average.
+        Output the number of odd ints in the array less than equal to the average.
+        Output the number of odd ints in the array greater than the average. 
+    Distribute the ints in the array to two separate arrays, one containing the even ints and one containing the odd ints. Output the two new arrays on the screen, each on one line separated by spaces. 
+
+Requirements
+
+    There are 9 steps given above. Each should be done separately and in the order given. In other words, don't do anything for #2 until #1 is complete, don't do anything for #3 until #2 is complete, etc. I want you to have the repetition of doing loop after loop.
+    Be sure to output only what is asked for. For example, in step #4, I want to see the average, not the sum and the average. Or in step #6, I want to see how many ints, not the ints themselves.
+    Use the appropriate type of loops as discussed in class.
+    Declare a constant for the array size (use 10). Make sure input does not exceed the size of the array. If there are more input ints than the size of the array, input still continues until the sentinel value is entered and a warning message is output indicating that the value was not entered into the array.
+    Declare a constant for the sentinel value.
+    Put your program in the file main.cpp in the directory ###a3, where ### is your 3 digit graded ID and a3 represents assignment number 3.
+    Compile and link the program producing the executable prog3.
+    Clean up your directory (to prepare for handing it in), so that the only files in your directory are main.cpp and prog3.
+    tar and compress your directory creating ###a3.tar.gz and hand it in to the proper folder on D2L (assignment 3)
+    Be sure to use proper documentation, indentation, input prompts, and labeling output.
+    RE-READ this assignment sheet before you turn your program in to make sure you are doing everything as outlined and in the given order. 

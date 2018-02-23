@@ -1,0 +1,66 @@
+// file: index_count_less_average
+// name: Paige Meyer
+// assignment: 5
+// class: CSIS 252
+// date: 2/27/2015
+
+#include <iostream>
+#include "constants.h"
+using namespace std;
+
+/* 
+ * Function: 	read
+ * Description:This function will ask for input from user to enter integers into the array 
+ * 		and insert those integers to the array, will return the length of the array
+ * Input: 	<none>
+ * Output: 	numbers (array of int)
+ * 		count (int) - the number of values read and stored into the array
+ * Pre-condtions: <none>
+ * Post-conditons: array with updated values
+ */
+
+int input_integers_to_array(int integers[]) {
+  int tmp_count = 0;
+  int tmp_number, tmp_index = 0;
+  
+  // Ask user for input
+  
+  cout << "Please enter an integer for the array: ";
+  cin >> tmp_number;
+  
+  // loop for verifying input and inserting into the array
+  while (tmp_number != sentinel) {
+    if (tmp_count < array_size) {
+      // check the value is positive, if so, enter number
+      if (tmp_number > 0) {
+        tmp_index = tmp_count;
+        for (int i = tmp_count; (i>0) && (integers[i-1] > tmp_number); i--) {
+	  integers[i] = integers[(i-1)];
+	  tmp_index = i-1;
+        } // end for
+        integers[tmp_index] = tmp_number;    // insert number into its right place
+      
+        tmp_index++;
+        tmp_count++;                		// incrementing count each time through
+      } // end if positive number
+ 
+      else { 
+        cout << "\nError: You entered a negative number!";
+      } // end else statement
+    } // end if less then array size
+    else {
+      cout << "\nError. You entered too many values!";
+    }// end else
+
+    // asking for a new number
+    cout << "\nPlease enter another integer for the list: ";
+    cin >> tmp_number;
+      
+    
+  } // end while loop
+  
+  // inform user they are done entering numbers
+  cout << "Finished entering, you entered 0." << endl << endl;
+  
+  return tmp_count;
+}// end input_integers_to_array

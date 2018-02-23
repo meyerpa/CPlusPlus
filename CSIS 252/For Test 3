@@ -1,0 +1,148 @@
+For Test 3
+
+1. Abstract data types: defined by their operations - ex arrayBasedList.tar.gz
+      a. ex typedef GroceryItem ITEM;
+            int main { arrayListType<GroceryItem> grocList; }
+      b. compiler duplicates code not us
+      c. templated classes/ADTs have array listType.h has both the specification and implementation so 
+              that it is included and compiled into the code that uses it. 
+              
+      Note: typename or class is the same thing
+2. Static ex static.tar.gz
+      a.  static attribute - has shared object attribute
+      b   static methods - allows you to access static attributes without using object
+      Note: static attribute is declared in the .cpp & static only appears in the .h file.
+3. Command line arguments ex args.tar.gz or example3.tar.gz
+      a. argc -> argument count
+         argv -> argument vector - array of cStings(array of char)
+      b. at positon 0 is the command to execute the file
+      int main(int argc,char *argv[]) { }
+4. How do you design a class?
+       First - attributes
+       Second - methods (operations)
+              - constructors  default - unless reason not to
+                              set all attributes *
+                              set key attributes
+              - accessors and mutators for each attribute *
+              - relational operators - unless reason not to
+              - other stuff
+5. Stacks ex. stackType.h and useStack.cpp
+      a. Like a stack of trays, only take(pop) or put on(push) top item
+      b. Only way to go through all is to take off top or put on.
+      c. LIFO structure
+      d. should NOT search stack
+      e. Application of stacks, postfix expressions calculator
+6. Queues ex queueType.h and useQueue.cpp
+      a. FIFO structure, otherwise similar to stack
+      b. should NOT search a queues
+7. Post-fix (ab+)or(ab+cde/-*f+) and Pre-fix operands +(ab) or (+*+ab-c/def)
+8. May have to write templated syntax implementation: examples for arrayListType.h
+9. Stack methods implementation: 
+      pop() {stacktop--; }
+      top() {return list[stacktop-1]; }
+10. Abstract Data Types are DEFINED by their operations
+    Note: Is a difference between a linked stack and an array-based stack type
+11. QueueFront = (queueFront + 1)%maxQueueSize;
+    AddQueue { queueRear = (QueueRear + 1)%maxQueueSize;  queueRear = newItem; }
+    isEmptyQueue { return queueFront == (queueRear + 1) % maxQueueSize; }
+    isFullQueue { return queueFront == (queueRear + 1 )% maxQueueSize; }
+    cannot have both isfull and isEmpty would have same conditions, thus count is an attribute
+12. Note: count attribute in queueClass is to distinguish between empty and full
+13. Pointers - contain addresses of where other things are: ex pointers.tar.gz
+      a.  & address of (thus when returning is is the physical address)
+      b. * dereferencing operator (use when an variable to get info for variable 
+	    when it is assigned the address)
+      c. Note: can index pointers just like can index an array
+      d. When increment a pointer, it will go to the next one, ex for integers, will add four
+      e. Pointers are static memory set aside by the compiler, while the value of it is dynamic memory
+          Static memory ----> Dynamic memory
+          ___________________
+          ex [p] ------> [7]
+      f. if there is new, then it is alligned during execution
+      
+14. Memory leak (when one value overwrites another program) can eventually fill-up memory,
+      Every program executes within its own memory space. OS needs to protect running programs.
+      Not a huge deal, but for production programs, it is a big deal. If allocating dynamic memory,
+      want to delete when done with it to prevent a memory leak. prevent by deleting dynamic memory
+      when done with it
+   ex:  void read() {
+             studentType* student;
+             student = new studentType();
+         }
+         delete student;
+         
+         or ex. delete [] p;
+15. Dangling pointer, pointer that points to unallocated memory. prevent by assigning pointer to null
+        ex. p = NULL;
+     Note: if have pointer to an array which you dynamically allocate, don't want to lose, so index it.
+17. Destructor - deallocates the dynamic memory, and should assign pointer to null:
+       Note: if ADT has dynamic memory, 
+	     1. need descructor to delete dynamic memory
+	     2. operator = deep copy of the dynamic memory
+           destructor will automatically execute when the object goes out of scope
+18. Trees - level (note: starts at 0)
+	   - height (longest number of nodes until the end)
+	   - binary search tree (greater than left and less than right nodes) 
+		ex binarySearchTree.tar.gz
+	   - traversal -
+		  breadth first - go outward and 
+		  depth first - Note: where V goes from prefix of word
+			preorder (VLR) - visit left right
+			inorder (LVR) - left visit right Note: gives ascending order for BSTs
+			postorder (LRV) - left right visit
+19. Binary Search Tree make sure know how to implement (less than left, greater than right)
+      - make ADT of this: see if empty, full, insert into, get
+      - uses pointers for right link and left link
+      - efficient searching algorithm
+20. Recursion examples recursion.tar.gz Note: do not need to implement this on the next assignment
+21. Note: Want to make sure can trace through a recursive solution
+      Also, recursion can be very inefficient e.g .if calling function twice each time.. ect.	
+      Recursion, can create nice, elegant solutions to problems.
+22. Any class that uses dynamic memory needs (3 things):
+      a. Destructor - deletes the dynamic memory
+		    - executes when the object goes out of scope
+      b. operator= : ex s2=s1;
+		  - must do a deep copy of the dynamic memory
+		  - copy constructor
+      c. copy constructor - deep copy of the dynamic memory
+		    -executes on pass by value param.s or when a function returns an obj.
+		    
+Last day study:
+    Recursion - simplfies code and produces and elegant solution for a difficult problems
+    Array-based list - Be able to write the logical linked list(stack) or an unlinked
+	  on the test. 
+    Be able to write the methods for array stack/queue.
+    Abstract data types - defined by operations on it.
+    Member selector -> (use instead of .) Used because of precedence same as (*p).x
+    Dereferencing operator * (gets stuff in address (stored in some variable))
+    Address operator & (gets address of variable stored in another variable)) 
+	  (don't do &array because it's already an address) ex. pointers
+    Can index pointers
+    Dynamically allocation use the term new
+    Know:   Memory leak, when dyn memory doens't have pointer to (delete dynamic memory) 
+	    Dangling pointer, pointing to non-allocated memory(assign pointer to NULL)
+    Dynamic memory - created during execution of program
+    Static memory - allocated by compiler
+    
+    DO: int x = 4;
+	int *p;
+	p=&x; // p!=x bad practice
+	int *p1;
+	p1 = new int[4];
+	int *p2;
+	p2 = new int;
+	*p2 = 12;
+	p1[2] = 8;
+	p2 = p1; 		// have dangling pointer
+	p2++;
+	*p2 = 7;
+	
+    
+    Static Memory		Dynamic Member
+    1. x = 4			11. array of boxes
+    2. p - point 1		12. int in a box
+    3. p1 - 11
+    4. p2 - point 12 then 11
+    
+    Know: infix, bst, prefix and post-fix.
+    

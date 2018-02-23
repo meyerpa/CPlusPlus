@@ -1,0 +1,129 @@
+File:    	README
+Author:  	Paige Meyer
+Assignment: 	10
+Date:	 	4/16/2015
+
+
+BUILDING THE PROGRAM
+   This program was written in C++ and distributed to be built on a 
+   Linux system.  To build the program, type 'make' to create the 
+   executable called 'prog10'.
+
+RUNNING THE PROGRAM
+   Type 'prog10' at the command prompt after building the program.
+
+PROGRAM DESCRIPTION
+   This program will take max score, names, and scores recieved from a file called people up to
+   20 people long. It will then output those names in ascending order with respect to age
+   to the screen.
+
+PROGRAM INPUT
+   All input comes from the the file typed on the command line. The program will read until
+   twenty names and ages(int). Input has to be name first then on the next line
+   the age as an integer return character, then repeat for up to 20 people. 
+   An example is below.
+      100
+      Paige Meyer
+      50
+      Olga
+      48
+      Harry
+      80
+      Charlie
+      89
+      August
+      87
+      April
+      77
+      May
+      69
+      Oprah
+      59
+      Winfrey
+      58
+      
+   
+PROGRAM OUTPUT
+   All output is written to a file called as designated. From the example input above,
+   the output is:
+	Maximum score: 100
+	NAME                      SCORE   PCT  GRADE
+	------------------------- ----- ------ ----- 
+	Olga                         48   0.48     F 
+	Paige Meyer                  50   0.50     F 
+	Winfrey                      58   0.58     F 
+	Oprah                        59   0.59    D- 
+	May                          69   0.69    C- 
+	April                        77   0.77    C+ 
+	Harry                        80   0.80     B 
+	August                       87   0.87    B+ 
+	Charlie                      89   0.89    A- 
+
+
+      
+
+PROGRAM DESIGN
+   This program stores all the data in a orderedList of studentType(class).
+
+   The general algorithm
+      Read from file and insert data to studentType.
+      Insert studentType into the orderedList
+      Iterate above two steps while still data in people file
+      Sort array accoring to score
+      Print formatted array
+      
+    
+
+   Function input and output, preconditions and postconditions can
+   be found in the documentation for each file.
+
+FILE INDEX
+   file                 function(s)        description
+   --------------       -----------------  ----------------------
+   constants.h                             constant declarations
+   
+   prototypes.h                            function prototypes
+
+   dateType.h		class header	    header file for class dateType
+   
+   dateType.cpp		class		    class dateType
+
+   personType.h		class header	    header file for class personType
+   
+   personType.cpp	class		    class personType
+   
+   studentType.h	class header	    header file for class studentType
+   
+   studentType.cpp	class		    class studentType
+   
+   main.cpp            main                 calls other functions
+ 
+   description.cpp	output descript.    tells user what file is for
+   
+   print.cpp    	print               outputs formatted names and ages
+   
+   read.cpp            data                 gets data from file
+
+   arrayListType.h     templated array class to store information
+
+   orderedList.h       data		    stores information in an ordered list
+
+   openfiles.cpp       open files	   file to open files and error check cmd line arguments
+
+   sort.h              sort                sort template
+
+   makefile                                builds executable
+
+   README                                  this file, used for desciptions
+
+
+PROGRAM TESTING
+   This program was tested with different sets of data.  
+      
+      With over 15 students
+      
+      With people of the same score
+      
+      With an empty data file
+
+      

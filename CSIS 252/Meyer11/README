@@ -1,0 +1,87 @@
+File:    	README
+Author:  	Paige Meyer
+Assignment: 	11
+Date:	 	4/28/2015
+
+
+BUILDING THE PROGRAM
+   This program was written in C++ and distributed to be built on a 
+   Linux system.  To build the program, type 'make' to create the 
+   executable called 'prog11'.
+
+RUNNING THE PROGRAM
+   Type 'prog11' at the command prompt after building the program.
+
+PROGRAM DESCRIPTION
+   This program will take a infix expression and convert it to postfix expression.
+
+PROGRAM INPUT
+   All input comes the screen. The program will read one line for the expression.
+   An example is below.
+      (a-b)/w^3+3/2
+      
+   
+PROGRAM OUTPUT
+   All output is written to the screen. From the example input above,
+   the output is:
+	Infix notation: (A-B)/W^3+3/2
+	Postfix expresion: AB-W3^/32/+
+
+
+      
+
+PROGRAM DESIGN
+   This program stores all the data in queues. When sorting from infix to 
+   postfix it uses a stack and a queue to finally get the infix queue to
+   postfix queue.
+
+   The general algorithm
+      Read from the screen an infix expression and insert into queueType.
+      Print the infix expression
+      Change from infix to post-fix.
+      print the post fix queueType.
+      
+    
+
+   Function input and output, preconditions and postconditions can
+   be found in the documentation for each file.
+
+FILE INDEX
+   file                 function(s)        description
+   --------------       -----------------  ----------------------
+   constants.h                              constant declarations
+   
+   prototypes.h                             function prototypes
+
+   queueType.h		class		    header file for queueType
+
+   stackType.h		class		    header file for stackType
+   
+   main.cpp             main                calls other functions
+ 
+   isOperator.cpp	function	    checks if char is an operator	
+   
+   print.cpp    	print               outputs queueType
+   
+   read.cpp             data                 gets data from line 
+
+   isShouldAddOperator.cpp function	    see if char should be added to queue
+
+   makefile                                 builds executable
+
+   README                                   this file, used for desciptions
+
+
+PROGRAM TESTING
+   This program was tested with different sets of data.  
+      
+      With various infix expressions:
+	   (a-b)/w^3+3/2
+	   (4/3)+5/4^3
+	   (3+4)/3^5
+	   2+3
+	   2/3+4/3
+	   4/a^b
+
+      With no infix expression (just a return character)
+      

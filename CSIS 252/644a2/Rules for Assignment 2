@@ -1,0 +1,24 @@
+Write a C++ program on smaug to process student scores outputting results for each student followed by summary information for the class as a whole. Follow the below directions.
+
+    Create a directory called ###a2 on your smaug account where ### is your 3 digit grade ID and a2 represents assignment number 2.
+    Create the program in the file main.cpp that will do the following.
+        Input a maximum score (int - the maximum number of points possible).
+        Input student scores (int) one at a time, and output the score, percentage, and letter grade (use the grade ranges given in the course syllabus which includes grade shades + and -) immediately following input of each score. Use constants for the grade threshholds. Sentinel value -999 ends the input. Use a constant to declare the sentinel value. A sentinel value is not considered part of the input for processing purposes.
+        You may assume all input is correct. In other words, if someone entering input enters a float or a negative value or whatever, that's their problem and odd results are the fault of data entry, not the program. When I grade your program, I'll enter only valid data.
+        Once the sentinel value is entered, report the following summary information:
+            maximum score
+            the number of students processed
+            high score
+            low score
+            average score
+            average percentage
+            number of students getting each letter grade ignoring grade shades (B-, B, and B+ all count in the B category) 
+        All floating point output should be formatted to 2 decimal places. These include percentages and averages.
+        As always, use good input prompts and label all output.
+        Do not include extra fancy stuff in what you turn in. You are welcome to experiment with such stuff if you want, but it should be removed for what you turn in. What I mean is don't clear the screen for each student, don't make me press return to continue, etc. While such things may be nice, it just makes my grading task more difficult. 
+    Compile and link the program producing the executable prog2.
+    Clean up your directory (to prepare for handing it in), so that the only files in your directory are main.cpp and prog2.
+    tar and compress your directory creating ###a2.tar.gz and hand it in to the assignment2 dropbox on D2L.
+    Be sure to use proper documentation, indentation, input prompts, and labeling output.
+    All input is from the keyboard and all output is to the screen.
+    RE-READ this assignment sheet before you turn your program in to make sure you are doing everything as described. 

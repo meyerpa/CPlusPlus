@@ -1,0 +1,119 @@
+For Test:
+1. Advantages of constants
+	a) enhance readability of a program by assigning a name to a value
+	b) constants make changes EASIER and LESS ERROR PRONE.
+	Note: consts. are typically declared outside of functions
+2. Know about name and password
+	a) phil mickelson
+3. Insertion operator: <<
+4. Extraction operator: >>
+	a) skips whitespace
+	b) reads the type of the variable
+	c) stops reading at whitespace or a character not of the type
+5. Be able to trace through code
+6. for(init; conditon; update) {
+	  some statement;
+    }
+7. While loop
+      a. condition-controlled
+      b. executes a variable number of times (unknown number)
+8. for loop
+      a. counter controlled
+      b. executes a FIXED number of times (known number)
+9. Arrays
+      a. all arrays start with index 0
+      b. arrays should be delcared using a constant (for the array size)
+      c. note: arrays initially contain garbage
+      d. no boundary checking for arrays can do my_array[2390428] unless it's a diff part of mem.
+10. Switch
+	a. convenient
+	b. multi-way
+	c. limitations: on value, must be ordinal
+11. Conditional operator
+	a. larger = x>y? x:y; //if true, the value is the first one. If false, the value is the second
+12. Continue statement, skips rest of statements in the interation, then checks the condition again.
+13. Pre-incrementing ++x, post-incrementing x++:
+	a. If x=5;
+	      y = x ++ means that y = 5 and x = 6
+	b. If x = 5
+	      y = ++x means that y = 6 and x = 6
+	c. If x = 5
+		y = x++
+		z = ++y + x++
+		means that x = 7, y = 7, z = 13
+14. Escape character /
+	  a. If want to print backslash in string, use //
+	  b. If want to print " in string, use /
+15. Assignment statements:
+	a. +=
+	b. -=
+	c. *=
+	d. /=
+	e. %=
+16. Note: functions preforms a SINGLE task
+17. Why use functions?
+	a. Modularize program through subprograms
+	b. Implement stepwise refinement of problem
+	c. Enhances readbility by removing a section of code and replacing it with a name
+	d. can be reused within the program
+	e. Can be create and debugged separately
+	f. Different programmers can create different functions
+18. Terminology:
+	a. Formal Parameters: parameters delcared within writing the function
+	    e.g. void greeting(string name) {  
+	b. Actual Parameters: parameters used calling the function
+	    e.g. greeting("My Name!");
+19. Note: when using the parameters formal and actual parameters must match type and order
+20. Function input: should be parameters
+	a. what does the function need to perform its task?
+	b. What values are given to the function?
+21. Function output: should be the return value
+	a. Results of the function
+	b. What the function returns
+22. Note: you  should never have output in your function unless that's the purpose of the function.
+23. Parameters can be:
+	a. Pass by value : a copy is made
+	b. Pass by reference :  the formal parameter references the actual parameter
+		i. Note: arrays are already pass by reference
+24. C++ has short circuit evaluation: exits from if/while statements if the first is false
+25. Trace through code
+26. Question about read outside loop and read at the bottom of the loop
+	a. reference void read function
+		void read(int numbers[], int& count) {
+		    count = 0; // since it wasn't function input
+		    cout << "enter ints, " << sentinel << " to quit: ";
+		    int num;
+		    cin >> num;
+		    while (num != sentinel && count < arraysize) {
+			numbers[count] = num;
+			count++;
+			cin >> num;
+		    }
+		  }
+27. Write prototype for function input and output
+	a. ex function input: a(int), b(int)
+	      function output: a(int) c(int)
+	     
+	     = void function(int& a, int b, int& c) 
+28. Two ways to get output from a function
+      a. return mechanism
+      b. pass by reference
+29. Memorize:
+      a. complete program, use #include <iosteam> into namespace std;
+      b. don't have to do documentation
+30. Constants file
+      a. have .h extension
+      b. do NOT compile .h files, they are included. Could lead to errors
+31. Makefile
+      a. General format, use for each, repeat
+	target: dependecies [ex main.o]
+	<tab> command to create the target
+      b. Example
+	  prog:    main.o output.o biggest.o search.o read.o
+		   g++ -o prog main.o output.o biggest.o search.o read.o
+	  main.o:  main.cpp, constants.h
+		   g++ -c main.cpp
+      c. to compile the make file all you have to type is make
+      d. clean:
+		   rm -rf *.o prog *~
+      

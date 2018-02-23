@@ -1,0 +1,32 @@
+// file: count_less_average
+// name: Paige Meyer
+// assignment: 5
+// class: CSIS 252
+// date: 2/27/2015
+
+/*
+ * Function: 	   calculate
+ * Description:    Will return the integer of the number of integers which is 
+ * 		   less than the average
+ * Input:	   numbers (array of int) - array to calculate the avearge
+ * 		   count (int) - length of array
+ * Output: 	   count_less_avg (int) - number of integers less or equal than average
+ * Preconditions:  <none>
+ * Postconditions: <none>
+ */
+
+void count_less_average(const int numbers[], int ct, double avg, int& ct_less_avg, int& ct_greater_avg) {
+  
+  // check if the integer is less than or equal to the average and increment count
+  for (int i = 0 ; i < ct; i++) {
+
+    // if less than or equal to the average, increment count of average
+    if (numbers[i] <= avg && i < ct) {
+      ct_less_avg++;
+    } // end if loop
+    // else, increment count greater than the average
+    else {
+       ct_greater_avg++;
+    } // end else loop
+  } // end for loop
+}// end count_less_average

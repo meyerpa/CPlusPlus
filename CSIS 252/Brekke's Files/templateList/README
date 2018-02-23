@@ -1,0 +1,10 @@
+This example is the same as listADT and listADT2 except that it
+uses a templated list class instead of using typedef.
+
+NOTE: Templated classes must be compiled into the code that uses it.
+It cannot be compiled separately because the compiler would not know
+what the data type is for the template.  That is why the entire class
+ADT for the list is contained within the file arrayListType.h (both the 
+class specification and implementation).  Again, the list class is
+NOT compiled, it is only included into the code that uses it.
+

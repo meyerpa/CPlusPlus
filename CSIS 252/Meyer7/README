@@ -1,0 +1,95 @@
+File:    	README
+Author:  	Paige Meyer
+Assignment: 	7
+Date:	 	3/13/2015
+
+
+BUILDING THE PROGRAM
+   This program was written in C++ and distributed to be built on a 
+   Linux system.  To build the program, type 'make' to create the 
+   executable called 'prog7'.
+
+RUNNING THE PROGRAM
+   Type 'prog7' at the command prompt after building the program.
+
+PROGRAM DESCRIPTION
+   This program will take names and ages(int) from a file called data up to
+   20 people long. It will then output those names in age ascending order
+   to the screen.
+
+PROGRAM INPUT
+   All input comes from the the file calle data. The program will read until
+   twenty names and ages(int). Input has to be name first then on the next line
+   the age as an integer return character, then repeat for up to 20 people. 
+   An example is below.
+      Paige Meyer
+      20
+      Olga Anderson
+      80
+      Harry Henders
+      34
+      Helga
+      6
+      
+   
+PROGRAM OUTPUT
+   All output is written to a file called output. From the example input above,
+   the output is:
+	NAME                AGE
+	-----------------------
+	Helga                 6
+	Paige Meyer          20
+	Harry Henders        34
+	Olga Anderson        80
+
+      
+
+PROGRAM DESIGN
+   This program stores all the data in an array of people(struct).
+
+   The general algorithm
+      Read from file and insert data to struct.
+      Insert struct into list
+      Iterate above two steps while still data in data file
+      Sort array accoring to age, ascendingly
+      Print formatted array
+      
+    
+
+   Function input and output, preconditions and postconditions can
+   be found in the documentation for each file.
+
+FILE INDEX
+   file                 function(s)        description
+   --------------       -----------------  ----------------------
+   constants.h                             constant declarations
+   
+   prototypes.h                            function prototypes
+
+   decl.h				    stucts
+   
+   main.cpp             main               calls other functions
+   
+   print_array.cpp      print              outputs formatted names and ages
+   
+   read.cpp             data               gets data from file
+
+   sort_age.cpp         sort               sorts data by age, ascendingly
+
+   makefile                                builds executable
+
+   README                                  this file, used for desciptions
+
+
+PROGRAM TESTING
+   This program was tested with different sets of data.  
+      
+      With over 20 names and ages
+      
+      With names separated with spaces and commas
+      
+      With people of the same age
+      
+      With an empty data file, so no people
+
+      

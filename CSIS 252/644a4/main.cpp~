@@ -1,0 +1,406 @@
+// name: Paige Meyer
+// assignment: 4
+// class: CSIS 252
+// date: 2/13/2015
+
+
+#include <iomanip>
+#include <iostream>
+using namespace std;
+
+/* Program Description:
+  This program will take integers the user inputs, up to 10 integers long.
+  It will then output:
+         1. The integers separated in ascending order
+         2. The integers separated by spaces in descending order
+         3. Average value
+         4. Median value
+         5. Number of integers that is equivalent or less than or greater than the average
+         6. Same as previous using a different algorithm
+         7. Information for:  even integers equal or less than the average, even integers greater
+                 than the average, odd integer equal to or less than the average, and even integers
+                 greater than the average
+         8. Separate and display two arrays, one for evens and another for the odds and then display those arrays.
+*/
+
+// Constants
+
+const int array_size = 10;				// have array size to be 10 initially
+const int sentinel = 0;
+
+// function prototypes
+void program_description();
+int input_integers_to_array(int integers[]);
+void print_array_ascending(const int array[], int ct);
+void print_array_descending(const int array[], int ct);
+double average_value(const int numbers[], int ct);
+double median_value(const int numbers[], int ct);
+void count_less_average(const int numbers[], int ct, double avg, int& ct_less_avg, int& ct_greater_avg);
+void index_count_less_average(const int numbers[], int ct, double avg, int& index_less_avg, int& index__greater_avg);
+int even_less_equal_average(const int numbers[], int ct, double avg);
+int even_greater_average(const int numbers[], int ct, double avg);
+int odd_less_equal_average(const int numbers[], int ct, double avg);
+int odd_greater_average(const int numbers[], int ct, double avg);
+void separate_even_odd_arrays(const int numbers[], int, int even[], int& count_even, int odd[], int& count_odd) ;
+
+
+int main() {
+
+  // Variables
+  
+  int integers[array_size];			// create array of integers
+  int tmp_number;				// temporary value for user input to the array
+  int count = 0;				// create count for each time a value is added to the array for error-checking
+  int sum;					// make a sum for calculating average
+  double average = 0;				// create average for saving average of the array
+  int ct_less_avg = 0;				// create a count for numbers less than or equal to the average
+  int ct_greater_avg = 0;			// create a count for numbers greater than the average
+  int ct_even_less_avg = 0;			// create a count for even numbers less than or equal to the average
+  int ct_even_greater_avg = 0;			// create a count for  even numbers greater than the average
+  int ct_odd_less_avg = 0;			// create a count for odd numbers less than or equal to the average
+  int ct_odd_greater_avg = 0;			// create a count for odd numbers greater than the average
+  int even_integers[array_size];		//initalizing even integer
+  int odd_integers[array_size];			//instantiating odd integers arrar
+  int index_even_integers = 0;			//instantiation count for index of even integers array
+  int index_odd_integers = 0;			//instantiation count for index of odd integers array
+  int index_less_avg = 0;			//variable for saving for count less than average
+  int index_greater_avg = 0;			//variable for saving for count greater than average
+
+  
+  // Format to two decimal places
+  
+  cout << fixed << showpoint << setprecision(2);
+  
+  // returns nothing
+  program_description(); // print description for the program
+  
+  
+  count = input_integers_to_array(integers); // insert values into the integer array based on user input
+  
+  // Number 1
+  cout << "1. Integer List in ascending order: ";
+  print_array_ascending(integers, count);
+  cout << endl;
+  
+  
+  // Number 2
+  cout << "2. Integer List in descending order: ";
+  print_array_descending(integers, count);
+  cout << endl;
+  
+  
+  // Number 3
+  // calculating the average value in the array
+  
+  cout << "3. Average Value: ";
+  average = average_value(integers, count);
+  cout << average << endl;
+  
+  // Number 4
+  // calculating the median value in the array
+
+  cout << "4. Median Value: ";
+
+  // format to one decimal place
+  cout << fixed << showpoint << setprecision(1);
+  cout << median_value(integers, count) << endl;
+    
+  
+  
+  // Number 5
+  // printing values for number 5
+  cout << "5. Number of values less than or equal to the average: ";
+  //call function and update values
+  count_less_average(integers, count, average, ct_less_avg, ct_greater_avg);
+  cout << ct_less_avg << endl;
+//Note: need to have ct_greater_avg returned
+  cout << "   Number of values greater than the average: ";
+  cout << ct_greater_avg << endl;
+  
+  
+  // Number 6:
+  // Calculate the number of values less than or equal to the average
+  // and numbers greater than average using different algorithm
+  
+// Note: is pass-by value
+  index_count_less_average(integers, count, average, index_less_avg, index_greater_avg);
+  // printing output for number 6
+  cout << "6. Number of values less than or equal to the average: ";
+  cout << index_less_avg <<endl;
+  cout << "   Number of values greater than the average: ";
+  cout << index_greater_avg << endl;
+  
+  
+  // Number 7.
+  // Output information about even and odds
+  
+  
+  
+  //printing output for number 7
+  cout << "7. Information about even and odd integers: " << endl;
+  cout << "\tNumber of even values less than or equal to the average: ";
+  cout << even_less_equal_average(integers, count, average) <<endl;
+  cout << "\tNumber of even values greater than the average: ";
+  cout << even_greater_average(integers, count, average) <<endl;
+  cout << "\tNumber of odd values less than or equal to the average: ";
+  cout << odd_less_equal_average(integers, count, average) <<endl;
+  cout << "\tNumber of odd values greater than the average: ";
+  cout << odd_greater_average(integers, count, average) <<endl;
+
+  
+  // Number 8.
+  // putting even and odd integers into to separate arrays and displaying
+
+  separate_even_odd_arrays(integers, count, even_integers, index_even_integers, odd_integers, index_odd_integers);
+
+  //display arrays
+  cout << "8. Even array: ";
+  //iterate through the even array and display
+  print_array_ascending(even_integers, index_even_integers);
+  cout << endl << "   Odd array: ";			//new line for odd integer array
+  print_array_ascending(odd_integers, index_odd_integers);
+  cout << endl << endl << "---End of Program---" << endl;
+
+  
+  return 0; 					//end program
+  
+} //end main
+
+
+
+
+//This function will print the description of the program
+// Pre-condtions: None
+// Post-condtions: None
+void program_description() {
+  
+  // Describe to user what program does
+  
+  cout << "\n\nThis program will take integers the user inputs, up to " << array_size << " integers long. \n";
+  cout << "It will then output: \n \t 1. The integers separated in ascending order \n \t 2. ";
+  cout << "The integers separated by spaces in descending order \n \t 3. Average value \n \t ";
+  cout << "4. Median value \n \t 5. Number of integers that is equivalent or less than or greater than ";
+  cout << "the average \n \t 6. Same as previous using a different algorithm \n \t 7. Information for: ";
+  cout << " even integers equal or less than the average, even integers greater \n \t \t than the average, ";
+  cout << "odd integer equal to or less than the average, and even integers \n \t \t greater than the average";
+  cout << " \n \t 8. Separate and display two arrays, one for evens and another for the odds.";
+  cout << endl << endl;
+  
+} // end program_description
+
+
+
+// This function will ask for input from user to enter integers into the array 
+// and insert those integers to the array, will return the length of the array
+// Pre-condtions: array
+// Post-conditons: integer with array length
+int input_integers_to_array(int integers[]) {
+  int tmp_count = 0;
+  int tmp_number, tmp_index = 0;
+  
+  // Ask user for input
+  
+  cout << "Please enter an integer for the array: ";
+  cin >> tmp_number;
+  
+  // loop for verifying input and inserting into the array
+  while (tmp_number != sentinel) {
+    if (tmp_count < array_size) {
+      // check the value is positive, if so, enter number
+      if (tmp_number > 0) {
+        tmp_index = tmp_count;
+        for (int i = tmp_count; (i>0) && (integers[i-1] > tmp_number); i--) {
+	  integers[i] = integers[(i-1)];
+	  tmp_index = i-1;
+        } // end for
+        integers[tmp_index] = tmp_number;    // insert number into its right place
+      
+        tmp_index++;
+        tmp_count++;                		// incrementing count each time through
+      } // end if positive number
+ 
+      else { 
+        cout << "\nError: You entered a negative number!";
+      } // end else statement
+    } // end if less then array size
+    else {
+      cout << "\nError. You entered too many values!";
+    }// end else
+
+    // asking for a new number
+    cout << "\nPlease enter another integer for the list: ";
+    cin >> tmp_number;
+      
+    
+  } // end while loop
+  
+  // inform user they are done entering numbers
+  cout << "Finished entering, you entered 0." << endl << endl;
+  
+  return tmp_count;
+}// end input_integers_to_array
+
+
+// will print the array separated by spaces in ascending order
+// Pre-condtions: array, and integer with length
+// Post-condtions: None
+void print_array_ascending(const int numbers[], int ct) {
+  
+  // iterate through the array append string with each value separated by a space
+  for (int i = 0 ; i < ct; i++) {
+    cout << numbers[i] << " ";
+  } // end for loop
+
+} // end print_array_ascending
+
+
+// will print the array separated by spaces in descending order
+// Pre-condtions: array, and integer with length
+// Post-condtions: None
+void print_array_descending(const int numbers[], int ct) {
+  
+  // iterate through the list and print values in descending order
+  for (int i = ct; i > 0; i--) {
+    cout << numbers[i-1] << " ";	// prints each number in the array separated by spaces
+  } // end for loop
+
+} // end print_array_descending
+
+
+// 
+double average_value(const int numbers[], int ct) {
+  int tmp_sum = 0;
+  for (int i = 0 ; i < ct; i++) {
+    tmp_sum += numbers[i];
+  } // end for loop
+//   if (count!=0) {
+   return static_cast<double>(tmp_sum)/ct;		// returns average value
+//   } // end if loop
+}
+
+
+double median_value(const int numbers[], int ct) {
+  // if odd number of integers, print one in middle
+  if (ct%2 ==1) {
+    return static_cast<double>(numbers[ct/2]);
+  } // end if
+  // if it's still here, has to be an even length
+  return (static_cast<double>(numbers[(ct+1)/2]) + numbers[(ct-1)/2]) / 2; 
+} // end median_value
+
+
+void count_less_average(const int numbers[], int ct, double avg, int& ct_less_avg, int& ct_greater_avg) {
+  
+  // check if the integer is less than or equal to the average and increment count
+  for (int i = 0 ; i < ct; i++) {
+
+    // if less than or equal to the average, increment count of average
+    if (numbers[i] <= avg && i < ct) {
+      ct_less_avg++;
+    } // end if loop
+    // else, increment count greater than the average
+    else {
+       ct_greater_avg++;
+    } // end else loop
+  } // end for loop
+}// end count_less_average
+  
+
+
+void index_count_less_average(const int numbers[], int ct, double avg, int& index_less_avg, int& index_greater_avg) {
+  index_less_avg = 0; // initialize the indexes to zero
+  index_greater_avg = 0;
+  
+  // check if the number is greater than the average and have index saved to variable
+  for (int i = 0 ; i < ct; i++) {
+    // check if the number we are on is greater than the average
+    // and the one after is less than or equal the average
+    if (numbers[i] > avg && numbers[i-1] <= avg) {
+      index_less_avg = i;
+    } // end if loop
+    index_greater_avg = ct - index_less_avg;
+  } // end for loop
+
+  //check it only one integer long
+  if (ct == 1) {
+    index_less_avg = 1;
+    index_greater_avg = 0;
+  } // end if statement
+} // end index_count_less_average
+
+
+int even_less_equal_average(const int numbers[], int ct, double avg) {
+  int ct_even_less_avg = 0;
+  // iterate through the number array and check if even, off, less than or equal to, or greater than the average
+  for (int i = 0 ; i < ct; i++) {
+	// check if the number is less than or equal to the average and even, then increment count
+    if (numbers[i] <= avg && numbers[i]%2 == 0) {
+      ct_even_less_avg++;
+    } //end if loop    
+  } //end for loop
+  return ct_even_less_avg;
+} // end even less equal count
+
+int even_greater_average(const int numbers[], int ct, double avg) {
+  int ct_even_greater_avg = 0;
+
+  // iterate through the number array and check if even, off, less than or equal to, or greater than the average
+  for (int i = 0 ; i < ct; i++) {
+    // check if the number is greater than the average and even, then increment count
+    if (numbers[i] > avg && numbers[i] % 2 == 0) {
+      ct_even_greater_avg++;
+    } // end if statement
+  } //end for loop
+  
+  return ct_even_greater_avg;
+} // end even greaterl count
+
+int odd_less_equal_average(const int numbers[], int ct, double avg) {
+  int ct_odd_less_avg = 0;
+
+  // iterate through the number array and check if even, off, less than or equal to, or greater than the average
+  for (int i = 0 ; i < ct; i++) {
+    // check if the number is less than or equal to the average and odd, then increment count
+    if (numbers[i] <= avg && numbers[i] % 2 == 1) {
+      ct_odd_less_avg++;
+    } // end else if loop
+  } // end for loop
+  
+  return ct_odd_less_avg;
+} // end odd less equal count
+
+
+int odd_greater_average(const int numbers[], int ct, double avg) {
+  int ct_odd_greater_avg = 0;
+  
+  // iterate through the number array and check if even, off, less than or equal to, or greater than the average
+  for (int i = 0 ; i < ct; i++) {
+    // check if the number is less than or equal to the average and odd, then increment count
+    if (numbers[i] > avg && numbers[i] % 2 == 1) {
+      ct_odd_greater_avg ++;
+    } // end else if loop
+  } // end for loop
+  
+  return ct_odd_greater_avg;
+} // end odd less equal count
+
+
+void separate_even_odd_arrays(const int numbers[], int ct, int even[], int& count_even, int odd[], int& count_odd) {
+  //separating into an even and odd array
+  for (int index = 0; index < ct; index++) {
+	//if even add integer to even array
+	if (numbers[index] % 2 == 0) {
+	  even[count_even] = numbers[index];
+	  count_even++;	// increment index each time value is added
+	} //end if 
+	//else, it's an odd integer so add to odd integer array
+	else {
+	  odd[count_odd] = numbers[index];
+	  count_odd++;	// increment index each time value is added
+	} // end else
+  } //end for statement
+} // end separate_even_odd_array
+
+
+
+  

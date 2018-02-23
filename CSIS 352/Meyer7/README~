@@ -1,0 +1,50 @@
+// File: README
+// Author: Paige Meyer
+// Assignment: prog7
+// Class: CSIS 352
+// Date: 04/20/2016
+
+BUILDING THE PROGRAM
+   This program was written in C++ and distributed to be built on a 
+   Linux system.  To build the program, type 'make' to create the 
+   executable called 'prog7'.
+
+RUNNING THE PROGRAM
+   Type 'prog7' at the command prompt after building the program.
+
+PROGRAM DESCRIPTION
+   This program contains and tests the sortedlist class.
+
+PROGRAM INPUT
+   All input comes from main.cpp and the screen. 
+   It asks for nodes in the tree and inserts them 
+   until the user enters 0.
+	
+PROGRAM OUTPUT
+   All output is written to the screen. It will show the result of operations
+      used in main and print those or the sortedlist object.
+	
+PROGRAM DESIGN
+   This program contains and tests the Graph and Vertex classes.
+      - It tests the constructors and methods.
+
+   Function input and output, preconditions and postconditions can
+   be found in the documentation for each file. For the SortedList class,
+   it can be found in SortedList.h.
+
+FILE INDEX
+   file                 function(s)        description
+   --------------       -----------------  ----------------------
+   binaryTree.h	  	  class		   the binaryTree class
+   
+   binarySearchTree.h	  class		   the binarySearchTree class
+   
+   main.cpp              main             tests the binarySearchTree class
+   
+   makefile                               builds executable
+
+   README                                 this file, used for desciptions
+
+
+PROGRAM TESTING
+   This program was tested with using the main.cpp

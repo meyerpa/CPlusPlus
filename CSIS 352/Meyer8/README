@@ -1,0 +1,49 @@
+// File: README
+// Author: Paige Meyer
+// Assignment: prog8
+// Class: CSIS 352
+// Date: 04/22/2016
+
+BUILDING THE PROGRAM
+   This program was written in C++ and distributed to be built on a 
+   Linux system.  To build the program, type 'make' to create the 
+   executable called 'prog8'.
+
+RUNNING THE PROGRAM
+   Type 'prog8' at the command prompt after building the program.
+
+PROGRAM DESCRIPTION
+   This program contains and tests the hash class. The hash class
+   uses a hash chain. On a side note, I used the old hash 
+   program because I already finished it the first day, and I thought
+   my time should be dedicated to preparing for the exam.
+
+PROGRAM INPUT
+   All input comes from main.cpp. It doesn't ask for any user input.
+	
+PROGRAM OUTPUT
+   All output is written to the screen. It will show the result of operations
+      used in main and print those or the hash object.
+	
+PROGRAM DESIGN
+   This program contains and tests the Hash class.
+      - It tests the constructors and methods.
+
+   Function input and output, preconditions and postconditions can
+   be found in the documentation for each file. For the Hash class,
+   it can be found in hash.h.
+
+FILE INDEX
+   file                 function(s)        description
+   --------------       -----------------  ----------------------
+   hash.h	  	  class		   the hash class
+   
+   main.cpp              main             tests the hash class
+   
+   makefile                               builds executable
+
+   README                                 this file, used for desciptions
+
+
+PROGRAM TESTING
+   This program was tested with using the main.cpp.

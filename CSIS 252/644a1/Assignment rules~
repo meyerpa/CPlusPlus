@@ -1,0 +1,23 @@
+CSIS 252 - Spring 2015
+Assignment #1 - 10 points
+Due Friday, January 23
+
+Write C++ programs on smaug by following the below directions.
+
+    Create a directory called ###a1 on your smaug account where ### is your 3 digit grade ID and a1 represents assignment number 1.
+    Create five C++ programs in the directory with the given filenames that will do the following. All input is from the keyboard and output is to the screen. Be sure to use good programming practices as discussed in class (input prompts, labeling output, good identifier names, documentation, etc.). Only the sequence control structure is required for each program. It is unnecessary to use selection (if / else) and iteration (loops). All floating point output is to be formatted to 2 decimal places. The programs below require the pow and sqrt functions from the cmath library (#include <cmath>). Examples: sqrt(16) gives 4. pow(3,4) is 3 raised to the power 4 which gives 81. There is no error checking required for input. Are you unsure what the formulas are in the below programs? Have you ever heard of google? ☺
+        main1.cpp - inputs the number of Kilometers (floating point) a car travelled and the number of Liters (floating point) of gasoline used, then outputs MPG (Miles per Gallon) as a floating point.
+        main2.cpp - inputs the radius (floating point) of a circle then outputs floating point results for the diameter, circumference, and area of the circle. Declare and use a constant for pi.
+        main3.cpp - inputs the length of all three sides of a triangle (floating points) then outputs the area of the triangle (floating point).
+        main4.cpp - inputs the length of sides A and B of a right triangle (both floating points) then outputs the floating point length of the hypotenuse.
+        main5.cpp - inputs loan amount (floating point), APR - Annual Percentage Rate (floating point), and term of the loan in months (int). Note: the APR is entered with a whole number. For example 9.5% would be entered as 9.5 not as 0.095. Output is floating point values for the monthly payment, total amount paid over the life of the loan, and total interest paid over the life of the loan. 
+    Compile and execute each program removing any syntax and/or logic errors.
+    Clean up your directory (to prepare for handing it in), so that the only files in your directory are the five programs.
+    tar and compress the directory. This can be done from the command line in the directory that contains your ###a1 directory:
+        tar  cvf  ###a1.tar  ###a1  (creates ###a1.tar containing all of your ###a1 directory)
+        gzip  ###a1.tar           (creates ###a1.tar.gz)
+    Note: the previous two commands can be combined into one.
+        tar  cvzf  ###a1.tar.gz  ###a1 Or you can do it using the windows interface by right-clicking on the folder.
+    Electronically hand in your program (###a1.tar.gz) to the Assignment 1 folder on D2L.
+    NOTE: I expect all naming conventions to be followed EXACTLY. You would be wise to re-read the assignment to make sure you are following all naming conventions. If everything is not exact, I will send you an e-mail for you to re-do it and then your program will be late.
+    NOTE: You are NOT allowed to use copy and paste for these five programs. Create everything from scratch. The redundancy of typing in everything will help you learn and remember the structure and syntax of a C++ program. There is information stored in the inode for each file that will allow me to see if you did use copy and paste. OK, I made that up so you're on your honor to not use copy and paste. What does the copy and paste save you... 1 minute? If you copy and paste you won't remember the program structure and you'll likely lose points on test 1 when I ask you to write a complete C++ program. Copy and paste is NOT the way to learn a programming language. It's lazy and it robs you of the potential of discovering syntax errors, which is another important skill to be learned. Copy and paste is for experienced programmers that already know the syntax of the programming language they are using. So there... ☺ 

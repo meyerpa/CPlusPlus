@@ -1,0 +1,169 @@
+// node count:
+  int nodeCount() const;
+    //Function to get the number of nodes in the tree
+    //Input: none
+    //Output: the number of nodes in the tree (int)
+    //Precondition:  none
+    //Postcondition: none
+    // base case -> is null thus, empty->return 0;
+    // general case: 1+ count(right) +count(left)
+    if (p==NULL)
+      return 0;
+    else
+      return 1 + count(p->rlink) + count(llink);
+    
+// height:
+    int height() const;
+      //Function to get the height of the tree
+      //Input: none
+      //Output: the height of the tree (int)
+      //Precondition:  none
+      //Postcondition: none
+    // base case: node is null thus, empty, so return 0;
+    // general case: if (height(left)>height(right)) -> return 1+height(left);
+	//	  else: return 1+height(right);
+	//or 1+ max(height(p->llink), height(p->rlink));
+    if (p == NULL)
+      return 0;
+    else if (height(p->llink) > height(p->rlink))
+      return 1 + height(p->llink);
+    else
+      return 1 + height(p->rlink);
+    
+// leaves count:
+    int leavesCount() const;
+      //Function to get the number of leaves in the tree
+      //Input: none
+      //Output: the number of leaves in the tree (int)
+      //Precondition:  none
+      //Postcondition: none
+    //base case: if p is null, return 0;
+	//      if p doesn't have any children, return 1
+    //general case:
+	//      return leafcount(right)+leafcount(left);
+    if (p==NULL)
+      return 0;
+    else if (p->rlink == NULL && p->llink == NULL)
+      return 1;
+    else
+      return leavesCount(p->rlink)+leavesCount(p->llink);
+
+// nonLeavesCount
+   int nonLeavesCount() const;
+      //Function to return number of nodes that are not leaves
+      //Input: none
+      //Output: the number of nodes that are not leaves
+      //Precondition:  none
+      //Postcondition: none
+    // base case: if (p==NULL) return 0;
+    // else if (p->llink !=NULL || p->rlink!=NULL) 
+    //  return 1 + nonLeavesCount(p->llink) + nonLeavesCount(p->rlink);
+    if (p==NULL) 
+      return 0;
+    else if (p->llink !=NULL || p->rlink!=NULL) 
+      return 1 + nonLeavesCount(p->llink) + nonLeavesCount(p->rlink);
+    else
+      return 0 + nonLeavesCount(p->llink) + nonLeavesCount(p->rlink);
+
+// search -> //NOTE: ONLY in binaryTreeType
+    bool search(const elemType& item) const;
+      //Function to see if an element is in the tree
+      //Input: none
+      //Output: if the boat is in the tree (bool)
+      //Precondition:  none
+      //Postcondition: Returns if an element is in the list
+    // base case: node is null -> return 0
+	//    node == tmp -> return 1;
+    // general case: return (search(p->llink) || search(p->rlink));
+    if (p==NULL) 
+      return 0;
+    else if (node == item) 
+      return 1;
+    else
+      search(p->llink) + search(p->rlink);
+    
+
+// oneChildCount
+   int oneChildCount() const;
+      //Function to return number of nodes with one child
+      //Input: none
+      //Output: the number of nodes with one child
+      //Precondition:  none
+      //Postcondition: none
+    // base case: node is null -> return 0;
+    // general case: (llink==NULL && rlink!=NULL) + (llink!=NULL && rlink==NULL) +
+	// oneChildCount(llink) + oneChildCount(rlink);
+    if (p==NULL) 
+      return 0;
+    else if ((p->llink ==NULL && p->rlink!=NULL) || (p->llink!=NULL && rlink==NULL) 
+      return 1 + oneChildCount(p->llink) + oneChildCount(p->rlink);
+    else
+      return 0 + oneChildCount(p->llink) + oneChildCount(p->rlink);
+
+// twoChildrenCount
+   int twoChildrenCount() const;
+      //Function to return number of nodes with two children
+      //Input: none
+      //Output: the number of nodes with two children
+      //Precondition:  none
+      //Postcondition: none
+    // base case: node is null -> return 0;
+    // general case (llink!=NULL && rlink!=NULL) + twoChildrenCount(llink) + twoChildrenCount(rlink)
+    if (p==NULL) 
+      return 0;
+    else if ((p->llink !=NULL && p->rlink!=NULL) 
+      return 1 + twoChildrenCount(p->llink) + twoChildrenCount(p->rlink);
+    else
+      return 0 + twoChildrenCount(p->llink) + twoChildrenCount(p->rlink);
+    
+// level //NOTE: should go in the BinarySearch Tree class
+   int level(const elemType& item) const;
+      //Function to return the level of the tree where item is.
+      //     The level is the number of branches from the root to the node. 
+      //     The root is at level 0.
+      //Input: item to find the level where it's at
+      //Output: level where item is
+      //Precondition:  item must be in the tree
+      //Postcondition: Returns the level where item is 
+      //Comment: I recommend this go in the binary search tree as it becomes
+      //         a much cleaner method.  Not so fun making it a binary 
+      //         tree method
+    // base case: node is null -> return 0;
+	//    node == tmp -> return 1;
+   // NOTE: make sure in main part, should call search to ensure is in graph
+    if (p==NULL) 
+      return 0;
+    else if (level(p->llink) !=0 && level(p->llink)<level(p->rlink)) 
+      1 + level(p->llink);
+    else
+      1 + level(p->rlink);
+	    
+// balanced
+   bool balanced() const;
+      //Function to return whether the tree is balanced (by definition) or not
+      //Input: none
+      //Output: whether tree is balanced or not (bool)
+      //Precondition:  none
+      //Postcondition: Returns true if tree is balanced, false otherwise
+      //NOTE: YOU MAY USE ANY OTHER METHOD
+   if (p==NULL)
+     return true;
+   else
+     return nodeCount(p->llink) == nodeCount(p->rlink) ||
+	     nodeCount(p->llink)+1 == nodeCount(p->rlink) ||
+	     nodeCount(p->llink) == nodeCount(p->rlink)+1;
+	    
+// breadthFirst // NOTE: use a queue from stl
+   void breadthFirstTraversal(void (*visit) (elemType&)) const;
+      //Function to do a breadth first traversal of the tree
+      //Input: a pointer to a function to execute on each item
+      //Output: none
+      //Precondition:  none
+      //Postcondition: the traversal visits each node
+      //NOTE: YOU PROBABLY WILL WANT TO WRITE AN ITERATIVE SOLUTION FOR THIS
+    
+    
+    
+    
+    
+    

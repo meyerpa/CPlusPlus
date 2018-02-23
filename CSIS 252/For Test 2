@@ -1,0 +1,223 @@
+Study guide for Test 2
+
+1. include is a preprocessor command
+      a. can include multiple header files
+2. FILE I/O
+    a. #include <fstream>
+    b. declare the file stream: ifstream infile; ofstream outfile;
+    c. Open the files:
+	 i. infile.open("inputfile"); // must exist
+	 ii. outfile.open("outputfile"); // creates if doesn't exist, overwites if does
+    d. USE them
+	  infile >> num;
+	  outfile << "hello" << endl;
+    e. close them
+	  infile.close();
+	  outfile.close();
+    f. infile.eof() //gets bool for whether it is the end of the file
+    g. Kate doesn't put end of line at the end of a file
+3. 
+4. ostream: includes cout and ofstream
+   istream: includes cin and ifstream
+5. type of library must always be pass by reference.
+    ex: output(ostream& output) {
+           output << "5" <<endl;
+        }
+            
+	ofstream outfile;
+	outfile.open("file1");
+	output(outfile);
+    
+6. C string - array of char.
+    a. cannot output, have to get each one individually
+    b. have to reference by index
+    c. null terminated \0 -- puts null char in there for you
+    d. basically if want to use variable for the file name need to use this:
+	char filename[] = "file3";
+    e. Fuctions:
+	i. strcpy(s1, s2) copies s2 to s1
+	ii. strcmp(s1, s2) - returns value < 0 if s1 is less than s2
+			   - returns 0 if same
+			   - returns > 0 if s1 is greater than s2
+	iii. strlen(s) - returns the length of s
+7. string - class
+    a. can use  ==, <, >, assignment operator, substrings, ect.
+8. Reading entire lines: getline(cin, variable_name, delimeter)
+9. Getting whitespace cin.get(whatever) will get the next character even if it is whitespace
+10. Ignoring new lines cin.ignore(80, '\n');
+11. Record - group of related fields ex. infor. about an person address, name, age, ect.
+      a. use structs
+12. Field - single data item ex. name or score
+13. Structs - 
+      a. need semicolon after close bracket
+      b. delaring a struct, creates a TYPE, not a variable
+      c. to select the field '.' is the member selector operator
+	  i. example 
+		struct example { 
+		    int i;
+		    char c;
+		 };
+		 example x;
+		 x.i = 12;
+      d. want to declare it where constants are used as well
+      e. another example
+	  example array_of_example[10];
+	  for (int index = 0; index < 10; index++) {
+	      array[index].i = 0;
+	      array[i].c = 'T';
+	  } // end for loop
+      f. decl.h should contain the structs
+		 
+14. Arrays vs structs
+    Aggregate Operation    	|      Arrays     	|    Structs
+    --------------------------------------------------------------------------------
+    Arithmetic		    	|   No        		|   No
+    Assignment             	|   No	       		|   Yes
+    Input/output           	|   No(minus str) 	|   No
+    Comparison			|   No	       		|   No
+    Parameter passing      	|   by reference   	|   by reference or value
+    Returning a value      	|   No  	       	|   Yes
+       
+15. Object Oriented Programming concepts
+      a. Abstraction - model of simplication of a physical object or concepts
+		     - separation of the logical properties of data or function from their implementation in a comp. prog
+	  i. Two types: data and procedural
+      b. Encapsulation - create an obj. by combining a data entity with operations that manipulate it
+      c. OOP - provides a method for encapsulation
+      d. object - an instance of a class
+      e. attributes - individual peices of data stored in an object
+      f. member functions  - peices of data stored in a object
+      g. benefits:
+	    i. encapsulation
+	    ii. reusabilty of code
+	    iii. inheritance - existing classes can be augmented to include addition features
+16. Classes information:
+      a. There are two parts to creating a class in C++
+	  i. specification (defn)
+		- includes the declaration of attributes and methods
+		- goes in a .h file
+		- attributes are typically private
+		- methods are typically public
+		- cannot initialize attributes in the specification, goes in implementation
+	  ii. implementation
+		- C++ code for the methods
+		- just like functions
+		- goes in a .cpp file and is compiled
+		- methods can be accessors (no change) or mutators (change state)
+		- constructor - creates the obj. has to be same name of class
+		      - if none provided, a default is provided for you
+		      - used to initalized the state of the object
+		      - a constructor is a member function, but it doesn't have a type
+		      - whenever can avoid changing obj.s directly, going to be more correct
+		      -can have multiple constructors, just need different parameters, 
+			    so signature is different.
+17. Why not simply create one file ex circle.h and circle.cpp?
+	a. need in order for compile and LINK to program to use
+	   since it has multiple definitions in different .o files
+	b. how to prevent linder error?
+	    - put the specification in a .h file and the implementation in .cpp and compile the
+		.cpp  and compile the .cpp seperately
+18. Compile Error Classes - 'redefinitions of 'const double PI' ...
+	a. Why did it occur?
+	    - if #include... in a .h file, may get a compiler error. 
+	b. prevent compiler error always put:
+	    #ifndef _CIRCLE_H_  // if not defined
+	    #define _CIRCLE_H_	
+	    
+	    // then at bottom need
+	    #END
+19. UML diagram
+	a. - represents private
+	   + denotes public
+	b. layout: class_name
+		   attributes [should be private] : type
+		   methods [should be public typically] (type params) : return type
+	c. Note: should have get and set methods for the attributes
+Note: if giving constructor exitno arguments, don't have parentheses
+    - error looks like 'request for member 'setX' in var1 ... for 'setY', getX & getY
+20. Operator Overload:
+         a.  bool operator==(Circle lhs, Circle rhs) {
+                return lhs.raduis() == rhs.radius()
+             } // end operator==
+         b. a gen. rule of thumb, when passing a struct/class use CONST pass by reference
+	      saves time and memory because a copy is not made
+	 c. Overloading << operator:
+	      need a function for it, because cannot change library
+	      ex. ostream& operator <<(ostream&, const circle&) {
+21. Methods of functions, when calling another function. us *this
+	ex. return !(*this==other);
+22. Note:
+	 a. Whenever you create a class, you should overload the relational operators, unless 
+	    there's a reason not to.
+	 b. Overload the == and < then use *this for the others
+23. This - pointer to the object itself
+	 - allows an object to refer to itself as a whole
+	 - * is the deferencing operator
+24. Note: streams are always pass by Reference!
+25. Only need == and less than to create other bool functions in a class
+26. cout << people[i].getBirthday().getYear() <- gets output of year
+27. Whenever you create a class, should overload relational operators.
+      Note: when using streams, want to return, because cascading of outpu/input
+28. Array of char are null-terminated
+29. Templated sort--can sort objects of multiple types, use in file sort.h
+        then to compile, need to include it to the .cpp file where you want to use it.
+30. Inheritance ("is-a" relationship) ex every employee is a person
+    Compositions ("has-a" relationship) ex every
+31. Inheritance - promotes code reusabilty
+		- new classes are called the derived class
+		- existing classes are called the base class
+		
+	ex. class className: memberAccessSpecifier baseClassName {
+		member list
+	    };
+32. To create an array of type, need default constructor. If make no constructor, one is 
+      provided to you
+33. Scope resoluation- two colons
+34. The base constructor executes before the derived constructor
+35. The initializer list if for invoking the base class constructore before the derived
+      class contructor executes. Without the initializer list the default base 
+      constructor will execute.
+36. Best to use an initializer list to invoke the base constructor
+37. 
+
+
+Review:
+   Need default constructor if have array of objects
+   If const by method, accessor. If no const, should be a mutator
+   scope resolution, when inheritance, need baseclass::doSomething() or whatever 
+	  if have same method
+   Default constructor is only provided if have NO other constructors
+   Base class constructor executes before the inheritance constructor
+   Initializer list - invokes base constructor with arguments
+	squareType::squareType(double side) : rectangleType(side, side) {
+	}
+   Note: remember syntax of #ifndef and #define and #endif
+   Basics of inheritance: 
+       "in .h file",...
+           class Derived : public Base {
+              public:
+                  Derived(int) //constructor
+                  void setY(int)
+              private:
+		   private int x;
+        "in .cpp file"
+           #include derived.h"
+           using namespace std;
+           
+           Derived::Derived(int value1, int value2) : Base(value1) {
+              setX(value1);
+              setY(value2);
+            }
+            void Derived::setY(int value) {
+              y = value;
+            }
+            int getY() {
+              return y;
+            }
+        Note: here have to use initializer list
+   Know how to write a make file
+   composition - has a
+   inheritance - is a
+   
+   Note: initalizer lists are not simply for constructors, could use initializer lsits for own values
+	-- could initalize values using this.
